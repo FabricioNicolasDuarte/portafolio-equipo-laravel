@@ -1,61 +1,139 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Portafolio de Equipo - UTN Programación IV
+Este es un proyecto desarrollado para la materia Programación IV de la Tecnicatura Universitaria en Programación de la UTN-FRRE. La aplicación web funciona como un portafolio dinámico para los integrantes del equipo, permitiendo a cada uno gestionar su propio perfil profesional.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+🚀 Acerca del Proyecto
+La aplicación permite el registro de usuarios (alumnos) para que puedan crear y mantener un perfil personal con su información académica, una descripción sobre ellos y enlaces a sus redes profesionales como GitHub, LinkedIn y WhatsApp.
 
-## About Laravel
+El sistema cuenta con un rol de Administrador (diseñado para el docente evaluador y un líder de equipo) que tiene permisos para visualizar y editar el perfil de cualquier usuario registrado.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+🛠️ Tecnologías Utilizadas
+Framework Backend: Laravel 12
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Base de Datos: MySQL
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Framework Frontend: Blade con Tailwind CSS
 
-## Learning Laravel
+Autenticación: Laravel Breeze
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Servidor Local: XAMPP
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+✨ Características Principales
+Sistema de Autenticación: Registro y Login de usuarios.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Roles de Usuario:
 
-## Laravel Sponsors
+Alumno: Puede ver todos los perfiles, pero solo editar el suyo.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Administrador: Puede ver y editar el perfil de cualquier usuario.
 
-### Premium Partners
+Gestión de Perfiles: Cada usuario puede añadir y actualizar:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Nombre y Apellido.
 
-## Contributing
+Foto de perfil (avatar).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Información académica (Carrera y Universidad).
 
-## Code of Conduct
+Una sección "Acerca de mí".
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Enlaces directos a GitHub, LinkedIn y WhatsApp.
 
-## Security Vulnerabilities
+Dashboard Interactivo: Muestra una galería con los perfiles de todos los alumnos.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Diseño Personalizado: Interfaz con un video de fondo y un estilo "dark mode" semi-transparente.
 
-## License
+📖 Manual de Instalación y Uso
+Para ejecutar este proyecto en un entorno local, sigue estos pasos:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Prerrequisitos
+Asegúrate de tener instalado lo siguiente:
+
+XAMPP (con Apache y MySQL)
+
+Composer
+
+Node.js & NPM
+
+2. Instalación
+Clonar el repositorio:
+
+git clone https://github.com/FabricioNicolasDuarte/portafolio-equipo-laravel.git
+
+Navegar a la carpeta del proyecto:
+
+cd portafolio-equipo-laravel
+
+Instalar dependencias de PHP:
+
+composer install
+
+Instalar dependencias de Node.js:
+
+npm install
+
+Crear el archivo de entorno: Copia el archivo de ejemplo.
+
+cp .env.example .env
+
+Configurar la base de datos:
+
+Abrí el archivo .env.
+
+Creá una base de datos vacía en MySQL (ej: portafolio_db).
+
+Modificá las siguientes líneas en el .env:
+
+DB_DATABASE=portafolio_db
+DB_USERNAME=root
+DB_PASSWORD=
+
+Generar la clave de la aplicación:
+
+php artisan key:generate
+
+Ejecutar las migraciones y los seeders: Este comando creará las tablas en la base de datos y los usuarios administradores por defecto.
+
+php artisan migrate --seed
+
+Crear el enlace simbólico para el almacenamiento: (¡Muy importante para que se vean las fotos!)
+
+php artisan storage:link
+
+3. Ejecutar la Aplicación
+Compilar los assets (CSS/JS): (Dejar esta terminal abierta)
+
+npm run dev
+
+Iniciar el servidor de Laravel: (En una segunda terminal)
+
+php artisan serve
+
+¡Listo! Ahora podés acceder a la aplicación en tu navegador en la dirección http://127.0.0.1:8000.
+
+🔑 Credenciales de Administrador
+Los usuarios administradores se crean automáticamente con el seeder:
+
+Usuario 1:
+
+Email: docente@utn.com
+
+Contraseña: clave123 (o la que hayas configurado en el seeder)
+
+Usuario 2:
+
+Email: fabricio.duarte@email.com
+
+Contraseña: clave123 (o la que hayas configurado en el seeder)
+
+👥 Integrantes del Equipo
+Duarte, Fabricio Nicolás (Administrador)
+
+Arias, Fabio
+
+Ascona, Enzo
+
+Amarilla, Sebastián
+
+Coronel, Marcelo
+
+Proyecto realizado en Agosto de 2025.
