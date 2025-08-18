@@ -3,9 +3,20 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\User;
+use App\Policies\UserPolicy;
 
-class AppServiceProvider extends ServiceProvider
+class AuthServiceProvider extends ServiceProvider
 {
+    /**
+     * The model to policy mappings for the application.
+     *
+     * @var array<class-string, class-string>
+     */
+    protected $policies = [
+        User::class => UserPolicy::class, // <-- Añade esta línea
+    ];
+    
     /**
      * Register any application services.
      */
