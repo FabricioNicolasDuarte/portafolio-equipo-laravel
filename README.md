@@ -125,6 +125,20 @@ Email: fabricio.duarte@email.com
 
 Contraseña: clave123 (o la que hayas configurado en el seeder)
 
+⚠️ Nota Importante para Colaboradores: Si las imágenes no se ven
+Problema: Después de clonar e instalar el proyecto, es posible que las fotos de perfil (avatares) no se muestren y aparezcan como imágenes rotas.
+
+Causa: Por seguridad, Laravel guarda los archivos subidos en una carpeta privada. Para que sean visibles en la web, se necesita crear un "acceso directo" 
+(enlace simbólico) en la carpeta pública. Este enlace no se transfiere a través de Git, por lo que cada colaborador debe crearlo en su propia máquina.
+
+Solución: Para solucionar esto, simplemente ejecutá el siguiente comando en la terminal de tu proyecto:
+
+cmd:
+
+php artisan storage:link
+
+Esto creará el enlace necesario y todas las imágenes comenzarán a funcionar correctamente.
+
 👥 Integrantes del Equipo
 Duarte, Fabricio Nicolás (Administrador)
 
