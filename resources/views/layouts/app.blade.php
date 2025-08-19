@@ -19,7 +19,7 @@
         <!-- ==================== VIDEO DE FONDO ==================== -->
         <!-- Este video se posiciona detrás de todo el contenido -->
         <video autoplay muted loop class="fixed top-0 left-0 w-full h-full object-cover -z-10">
-            <source src="{{ asset('videos/fondo-video.mp4') }}" type="video/mp4">
+            <source src="{{ asset('videos/video-nuevo.mp4') }}" type="video/mp4">
             Tu navegador no soporta videos HTML5.
         </video>
         <!-- ======================================================== -->

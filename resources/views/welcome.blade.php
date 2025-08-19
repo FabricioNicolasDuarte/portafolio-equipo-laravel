@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-f-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Portafolio del Equipo</title>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-        <!-- Styles -->
-        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+        
+        <!-- Video de Fondo -->
+        <video autoplay muted loop class="fixed top-0 left-0 w-full h-full object-cover -z-10">
+            <source src="{{ asset('videos/bienvenidos-video.mp4') }}" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+        <!-- Contenedor principal centrado -->
+        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen">
+            
+            <!-- Contenido Central -->
+            <div class="text-center">
+                <!-- Título de Bienvenida -->
+                <h1 class="text-5xl font-bold text-white tracking-wider mb-8">
+                    ¡Bienvenidos!
+                </h1>
 
-            <div class="max-w-7xl mx-auto p-6 lg:p-8">
-                <div class="flex justify-center">
-                   <h1 class="text-4xl font-bold text-gray-800 dark:text-white">Portafolio de Equipo</h1>
-                </div>
+                <!-- Contenedor de Botones -->
+                @if (Route::has('login'))
+                    <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="inline-block bg-black text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition-colors duration-300">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="inline-block bg-black text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition-colors duration-300">Iniciar Sesión</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="inline-block bg-black text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-gray-800 transition-colors duration-300">Registrarse</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </div>
+
         </div>
     </body>
 </html>
