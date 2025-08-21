@@ -4,7 +4,7 @@ use App\Http\Controllers\PaginaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PerfilUsuarioController;
 use Illuminate\Support\Facades\Route;
-use App\Models\User; // <-- ¡MUY IMPORTANTE AÑADIR ESTA LÍNEA!
+use App\Models\User;
 
 // --- RUTA DE BIENVENIDA ---
 Route::get('/', function () {
@@ -41,6 +41,10 @@ Route::middleware(['auth', 'es_admin'])->group(function () {
     // Procesa la actualización de los datos de ese usuario
     Route::put('/usuarios/{usuario}', [PerfilUsuarioController::class, 'actualizar'])
         ->name('admin.usuarios.actualizar');
+
+    // Procesa la eliminación del usuario
+    Route::delete('/usuarios/{usuario}', [PerfilUsuarioController::class, 'eliminar'])
+        ->name('admin.usuarios.eliminar');
 });
 
 
