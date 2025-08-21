@@ -1,7 +1,7 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    
+
     <!-- Logo Agrandado -->
     <div class="flex justify-center mb-4">
         <a href="/">
@@ -14,14 +14,14 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" value="Email" class="text-white-200" />
+            <x-input-label for="email" value="Email" class="text-white" />
             <x-text-input id="email" class="block mt-1 w-full bg-white-900 text-white-200" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" value="Contraseña" class="text-white-200" />
+            <x-input-label for="password" value="Contraseña" class="text-white" />
             <x-text-input id="password" class="block mt-1 w-full bg-white-900 text-white-200"
                             type="password"
                             name="password"
@@ -39,7 +39,7 @@
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-white-400 hover:text-white-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                <a class="underline text-sm text-white hover:text-white-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('¿Olvidaste tu contraseña?') }}
                 </a>
             @endif
