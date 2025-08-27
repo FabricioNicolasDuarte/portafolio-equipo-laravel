@@ -1,32 +1,43 @@
-# Define los servicios y la base de datos para Render
+# Define la base de datos y los servicios para Render
 
-# Primero, define la base de datos
 databases:
   - name: portfolio-db
     plan: free # Usa el plan gratuito
 
-# Luego, define los servicios que usarán la base de datos
 services:
   # Servicio Web para la aplicación Laravel (PHP)
   - type: web
     name: portfolio-alumnos
-    env: php
+    runtime: php # Especifica el entorno de ejecución de PHP
+    plan: free
     buildCommand: "./build.sh"
     startCommand: "php artisan serve --host 0.0.0.0 --port $PORT"
     envVars:
       - key: APP_URL
-        # Render asignará esta URL automáticamente
-        fromService:
-          type: web
-          name: portfolio-alumnos
-          property: url
+        # Render asignará esta URL, pero la ponemos aquí para la configuración inicial
+        value: https://portfolio-alumnos.onrender.com
       - key: APP_KEY
         # Genera una clave segura automáticamente
-        generateValue: true 
+        generateValue: true
       - key: DB_CONNECTION
         value: pgsql
-      - key: DATABASE_URL
-        # Toma la URL de conexión de la base de datos definida arriba
+      - key: DB_HOST # Host de la base de datos
         fromDatabase:
           name: portfolio-db
-          property: internalConnectionString
+          property: host
+      - key: DB_PORT # Puerto de la base de datos
+        fromDatabase:
+          name: portfolio-db
+          property: port
+      - key: DB_DATABASE # Nombre de la base de datos
+        fromDatabase:
+          name: portfolio-db
+          property: database
+      - key: DB_USERNAME # Usuario de la base de datos
+        fromDatabase:
+          name: portfolio-db
+          property: user
+      - key: DB_PASSWORD # Contraseña de la base de datos
+        fromDatabase:
+          name: portfolio-db
+          property: password
