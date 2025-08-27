@@ -101,4 +101,20 @@ class PerfilUsuarioController extends Controller
         // Redirigimos a la lista del equipo con un mensaje de éxito
         return redirect()->route('equipo.listar')->with('status', '¡Usuario eliminado con éxito!');
     }
+
+    /**
+     * NUEVA FUNCIÓN: Genera y descarga un PDF con la lista de alumnos.
+     */
+    public function descargarPDF()
+    {
+        // Obtenemos solo los usuarios que no son administradores
+        $usuarios = User::where('is_admin', false)->get();
+
+        // Cargamos la vista del PDF con los datos de los usuarios
+        // Usamos el namespace completo de la clase PDF para evitar errores
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('usuarios.pdf', ['usuarios' => $usuarios]);
+
+        // Descargamos el archivo PDF con un nombre específico
+        return $pdf->download('listado-alumnos-portfolio.pdf');
+    }
 }

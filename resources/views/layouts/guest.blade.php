@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Portfolio Alumnos') }}</title>
+        <link rel="icon" href="{{ asset('favicon.png') }}" type="image/png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -24,6 +25,13 @@
 
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
             
+            {{-- Título condicional que solo aparece en la página de registro --}}
+            @if (request()->routeIs('register'))
+                <h2 class="font-bold text-3xl text-white mb-4 tracking-wider">
+                    ¡Registrate acá!
+                </h2>
+            @endif
+
             <!-- Contenido del formulario (login, registro, etc.) -->
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-black/50 backdrop-blur-md shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
