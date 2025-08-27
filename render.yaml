@@ -6,7 +6,7 @@ services:
   - type: web
     name: portfolio-alumnos
     plan: free
-    env: docker # ¡Le decimos a Render que use Docker!
+    env: docker
     envVars:
       - key: APP_URL
         fromService:
