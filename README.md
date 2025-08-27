@@ -1,6 +1,6 @@
 # **Portafolio de Equipo \- UTN Programación IV**
 
-Este proyecto fue desarrollado para la materia **Programación IV** de la Tecnicatura Universitaria en Programación (UTN-FRRE). La aplicación web funciona como un portafolio dinámico para los integrantes del equipo, permitiendo a cada uno gestionar su propio perfil profesional.
+Este proyecto fue desarrollado para la materia **Programación IV** de la Tecnicatura Universitaria en Programación (UTN-FRRE). La aplicación web funciona como un portafolio dinámico para los alumnos de dicha materia, permitiendo a cada uno gestionar su propio perfil profesional.
 
 ## **🚀 Acerca del Proyecto**
 
@@ -12,15 +12,15 @@ El sistema cuenta con un rol de **Administrador** (diseñado para el docente eva
 
 * **Sistema de Autenticación:** Registro y Login de usuarios seguros con Laravel Breeze.  
 * **Roles de Usuario:**  
-  * **Alumno:** Puede visualizar todos los perfiles, pero solo editar el suyo.  
-  * **Administrador:** Tiene control total para ver y editar el perfil de cualquier usuario.  
+  * **Alumno:** Puede visualizar y editar sólo su perfil.  
+  * **Administrador:** Tiene control total para ver y editar el perfil de cualquier usuario y descargar la lista de usuarios (alumnos) registrados.
 * **Gestión de Perfiles:** Cada usuario puede añadir y actualizar:  
   * Nombre y Apellido.  
   * Foto de perfil (avatar).  
   * Información académica (Carrera y Universidad).  
   * Una biografía en la sección "Acerca de mí".  
   * Enlaces directos a GitHub, LinkedIn y WhatsApp.  
-* **Dashboard Interactivo:** Muestra una galería con las tarjetas de perfil de todos los alumnos.  
+* **Dashboard Interactivo:** Muestra una galería con la tarjeta de su propio perfil.  
 * **Diseño Personalizado:** Interfaz moderna con un video de fondo y un estilo *dark mode* semi-transparente.
 
 ## **🛠️ Tecnologías Utilizadas**
