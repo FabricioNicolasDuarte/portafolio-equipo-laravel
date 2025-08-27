@@ -20,6 +20,6 @@ services:
           property: internalConnectionString
 
   # Servicio de Base de Datos PostgreSQL
-  - type: psql
+  - type: postgres # <-- CORREGIDO DE 'psql' a 'postgres'
     name: portfolio-db
     plan: free
