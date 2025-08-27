@@ -6,11 +6,13 @@ services:
   - type: web
     name: portfolio-alumnos
     plan: free
-    buildCommand: "./build.sh"
-    startCommand: "php artisan serve --host 0.0.0.0 --port $PORT"
+    env: docker # ¡Le decimos a Render que use Docker!
     envVars:
       - key: APP_URL
-        value: https://portfolio-alumnos.onrender.com
+        fromService:
+          type: web
+          name: portfolio-alumnos
+          property: url
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
