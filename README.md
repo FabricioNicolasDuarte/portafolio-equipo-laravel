@@ -12,15 +12,15 @@ El sistema cuenta con un rol de **Administrador** (diseñado para el docente eva
 
 * **Sistema de Autenticación:** Registro y Login de usuarios seguros con Laravel Breeze.  
 * **Roles de Usuario:**  
-  * **Alumno:** Puede visualizar todos los perfiles, pero solo editar el suyo.  
-  * **Administrador:** Tiene control total para ver y editar el perfil de cualquier usuario.  
+  * **Alumno:** Puede visualizar y editar sólo su perfil.  
+  * **Administrador:** Tiene control total para ver y editar el perfil de cualquier usuario y descargar la lista de usuarios (alumnos) registrados.
 * **Gestión de Perfiles:** Cada usuario puede añadir y actualizar:  
   * Nombre y Apellido.  
   * Foto de perfil (avatar).  
   * Información académica (Carrera y Universidad).  
   * Una biografía en la sección "Acerca de mí".  
   * Enlaces directos a GitHub, LinkedIn y WhatsApp.  
-* **Dashboard Interactivo:** Muestra una galería con las tarjetas de perfil de todos los alumnos.  
+* **Dashboard Interactivo:** Muestra una galería con la tarjeta de su propio perfil.  
 * **Diseño Personalizado:** Interfaz moderna con un video de fondo y un estilo *dark mode* semi-transparente.
 
 ## **🛠️ Tecnologías Utilizadas**
