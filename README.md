@@ -1,6 +1,6 @@
 # **Portafolio de Equipo \- UTN Programación IV**
 
-Este proyecto fue desarrollado para la materia **Programación IV** de la Tecnicatura Universitaria en Programación (UTN-FRRE). La aplicación web funciona como un portafolio dinámico para los integrantes del equipo, permitiendo a cada uno gestionar su propio perfil profesional.
+Este proyecto fue desarrollado para la materia **Programación IV** de la Tecnicatura Universitaria en Programación (UTN-FRRE). La aplicación web funciona como un portafolio dinámico para los alumnos de dicha materia, permitiendo a cada uno gestionar su propio perfil profesional.
 
 ## **🚀 Acerca del Proyecto**
 
