@@ -11,10 +11,7 @@ services:
     startCommand: "php artisan serve --host 0.0.0.0 --port $PORT"
     envVars:
       - key: APP_URL
-        fromService:
-          type: web
-          name: portfolio-alumnos
-          property: url
+        value: https://portfolio-alumnos.onrender.com
       - key: APP_KEY
         generateValue: true
       - key: DB_CONNECTION
