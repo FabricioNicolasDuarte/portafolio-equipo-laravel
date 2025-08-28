@@ -1,7 +1,7 @@
 # Usa una imagen oficial de PHP 8.2 con FPM
 FROM php:8.2-fpm
 
-# Instala dependencias del sistema y extensiones de PHP necesarias para Laravel
+# Instala dependencias del sistema y extensiones de PHP
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -29,6 +29,9 @@ WORKDIR /var/www/html
 
 # Copia los archivos de tu proyecto
 COPY . .
+
+# Instala las dependencias de Composer
+RUN composer install --no-dev --optimize-autoloader
 
 # Copia la configuración de Nginx
 COPY .docker/nginx.conf /etc/nginx/sites-available/default
