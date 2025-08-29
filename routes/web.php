@@ -4,17 +4,25 @@ use App\Http\Controllers\PaginaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PerfilUsuarioController;
 use Illuminate\Support\Facades\Route;
-use App\Models\User; // <-- ¡MUY IMPORTANTE AÑADIR ESTA LÍNEA!
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 // --- RUTA DE BIENVENIDA ---
 Route::get('/', function () {
     return view('welcome');
 });
 
-// --- RUTA DEL DASHBOARD (CON LA LÓGICA DIRECTA) ---
+// --- RUTA DEL DASHBOARD (CON LÓGICA DE ROLES) ---
 Route::get('/dashboard', function () {
-    $alumnos = User::where('is_admin', false)->get();
-    return view('dashboard', ['alumnos' => $alumnos]);
+    // Verificar si el usuario autenticado es administrador
+    if (Auth::user()->is_admin) {
+        // Si es admin, muestra la lista de todos los alumnos
+        $alumnos = User::where('is_admin', false)->get();
+        return view('dashboard', ['alumnos' => $alumnos]);
+    } else {
+        // Si no es admin, redirige a la vista de su propio perfil
+        return redirect()->route('equipo.ver', Auth::user());
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -41,6 +49,14 @@ Route::middleware(['auth', 'es_admin'])->group(function () {
     // Procesa la actualización de los datos de ese usuario
     Route::put('/usuarios/{usuario}', [PerfilUsuarioController::class, 'actualizar'])
         ->name('admin.usuarios.actualizar');
+
+    // Procesa la eliminación del usuario
+    Route::delete('/usuarios/{usuario}', [PerfilUsuarioController::class, 'eliminar'])
+        ->name('admin.usuarios.eliminar');
+        
+    // RUTA AÑADIDA: Descargar la lista de usuarios en PDF
+    Route::get('/usuarios/descargar-pdf', [PerfilUsuarioController::class, 'descargarPDF'])
+        ->name('admin.usuarios.pdf');
 });
 
 

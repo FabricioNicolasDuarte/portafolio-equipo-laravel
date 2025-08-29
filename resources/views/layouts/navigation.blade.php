@@ -16,14 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     
-                    {{-- El enlace "Equipo" ahora solo se muestra si el usuario tiene permiso --}}
+                    {{-- El enlace "Alumnos" ahora solo se muestra si el usuario tiene permiso --}}
                     @can('viewAny', App\Models\User::class)
                         <x-nav-link :href="route('equipo.listar')" :active="request()->routeIs('equipo.listar') or request()->routeIs('equipo.ver')">
-                            {{ __('Equipo') }}
+                            {{ __('Alumnos') }}
                         </x-nav-link>
                     @endcan
 
-                    <!-- AÑADÍ ESTE NUEVO ENLACE -->
+                    
                     <x-nav-link :href="route('acerca.de')" :active="request()->routeIs('acerca.de')">
                         {{ __('Acerca de') }}
                     </x-nav-link>
@@ -86,7 +86,7 @@
             {{-- También se oculta el enlace en el menú móvil --}}
             @can('viewAny', App\Models\User::class)
                 <x-responsive-nav-link :href="route('equipo.listar')" :active="request()->routeIs('equipo.listar') or request()->routeIs('equipo.ver')">
-                    {{ __('Equipo') }}
+                    {{ __('Alumnos') }}
                 </x-responsive-nav-link>
             @endcan
 

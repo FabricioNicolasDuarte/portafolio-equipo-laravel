@@ -11,6 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Línea agregada para confiar en los proxies de Railway
+        $middleware->trustProxies(at: '*');
+
+        // Tu configuración de alias se mantiene
         $middleware->alias([
             'es_admin' => \App\Http\Middleware\EsAdminMiddleware::class,
         ]);

@@ -32,7 +32,7 @@ class PerfilUsuarioController extends Controller
         return view('usuarios.ver', ['usuario' => $usuario]);
     }
 
-    // --- MÉTODOS NUEVOS PARA ADMINISTRACIÓN ---
+    // --- MÉTODOS DE ADMINISTRACIÓN ---
 
     /**
      * Muestra el formulario para que un admin edite un perfil.
@@ -72,8 +72,6 @@ class PerfilUsuarioController extends Controller
                 Storage::disk('public')->delete($usuario->photo_path);
             }
             $path = $request->file('photo')->store('fotos-perfil', 'public');
-            // OJO: No podemos asignar directamente a $datosValidados['photo']
-            // porque la columna se llama 'photo_path'.
             $datosValidados['photo_path'] = $path;
         }
 
@@ -82,5 +80,41 @@ class PerfilUsuarioController extends Controller
 
         // Redirigimos de vuelta al perfil del usuario con un mensaje de éxito
         return redirect()->route('equipo.ver', $usuario)->with('status', '¡Perfil actualizado con éxito!');
+    }
+
+    /**
+     * Elimina el perfil de un usuario desde el panel de admin.
+     */
+    public function eliminar(User $usuario)
+    {
+        // Usamos la Policy para asegurar que solo un admin autorizado pueda eliminar
+        $this->authorize('delete', $usuario);
+
+        // Opcional: Si el usuario tiene una foto, la borramos del almacenamiento
+        if ($usuario->photo_path) {
+            Storage::disk('public')->delete($usuario->photo_path);
+        }
+
+        // Eliminamos el usuario de la base de datos
+        $usuario->delete();
+
+        // Redirigimos a la lista del equipo con un mensaje de éxito
+        return redirect()->route('equipo.listar')->with('status', '¡Usuario eliminado con éxito!');
+    }
+
+    /**
+     * NUEVA FUNCIÓN: Genera y descarga un PDF con la lista de alumnos.
+     */
+    public function descargarPDF()
+    {
+        // Obtenemos solo los usuarios que no son administradores
+        $usuarios = User::where('is_admin', false)->get();
+
+        // Cargamos la vista del PDF con los datos de los usuarios
+        // Usamos el namespace completo de la clase PDF para evitar errores
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('usuarios.pdf', ['usuarios' => $usuarios]);
+
+        // Descargamos el archivo PDF con un nombre específico
+        return $pdf->download('listado-alumnos-portfolio.pdf');
     }
 }

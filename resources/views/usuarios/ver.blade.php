@@ -41,22 +41,30 @@
                         <li><strong>Email:</strong> {{ $usuario->email }}</li>
                         
                         <!-- ======================================================== -->
-                        <!-- ||      INICIO: LÓGICA DEL ENLACE DE WHATSAPP        || -->
+                        <!-- ||    INICIO: LÓGICA DE WHATSAPP CON ROL DE ADMIN     || -->
                         <!-- ======================================================== -->
                         @if ($usuario->phone)
                             <li class="flex items-center">
                                 <strong>Teléfono:</strong>
-                                <a href="https://wa.me/{{ $usuario->phone }}" target="_blank" class="ml-2 flex items-center text-emerald-400 hover:text-emerald-300 hover:underline transition-colors">
-                                    <span>{{ $usuario->phone }}</span>
-                                    <!-- Icono de WhatsApp -->
-                                    <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.803 6.12l-1.34 4.894 5.068-1.339z" /></svg>
-                                </a>
+                                
+                                {{-- Si el usuario logueado es admin, muestra el enlace a WhatsApp --}}
+                                @if (Auth::check() && Auth::user()->is_admin)
+                                    <a href="https://wa.me/{{ $usuario->phone }}" target="_blank" class="ml-2 flex items-center text-emerald-400 hover:text-emerald-300 hover:underline transition-colors">
+                                        <span>{{ $usuario->phone }}</span>
+                                        <!-- Icono de WhatsApp -->
+                                        <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.803 6.12l-1.34 4.894 5.068-1.339z" /></svg>
+                                    </a>
+                                {{-- Si no es admin, muestra solo el número como texto --}}
+                                @else
+                                    <span class="ml-2">{{ $usuario->phone }}</span>
+                                @endif
+
                             </li>
                         @else
                             <li><strong>Teléfono:</strong> No disponible</li>
                         @endif
                         <!-- ======================================================== -->
-                        <!-- ||        FIN: LÓGICA DEL ENLACE DE WHATSAPP         || -->
+                        <!-- ||     FIN: LÓGICA DE WHATSAPP CON ROL DE ADMIN       || -->
                         <!-- ======================================================== -->
 
                         @if ($usuario->github_url)

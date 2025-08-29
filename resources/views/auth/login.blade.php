@@ -1,7 +1,7 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    
+
     <!-- Logo Agrandado -->
     <div class="flex justify-center mb-4">
         <a href="/">
@@ -14,14 +14,14 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" value="Email" class="text-white-200" />
+            <x-input-label for="email" value="Email" class="text-white" />
             <x-text-input id="email" class="block mt-1 w-full bg-white-900 text-white-200" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" value="Contraseña" class="text-white-200" />
+            <x-input-label for="password" value="Contraseña" class="text-white" />
             <x-text-input id="password" class="block mt-1 w-full bg-white-900 text-white-200"
                             type="password"
                             name="password"

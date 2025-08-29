@@ -14,21 +14,16 @@ class UsuarioAdministradorSeeder extends Seeder
      */
    public function run(): void
 {
-    // Usuario Administrador: Docente
-    User::create([
-        'name' => 'Fernando', 'last_name' => 'Aguirre',
-        'email' => 'ejemplo@gmail.com',
-        'password' => Hash::make('123456789'), // El profe tienen que configurar todo aca
-        'is_admin' => true,
-    ]);
+ 
 
-    // Usuario Administrador: Duarte Fabricio
+      // Usuario Administrador: Test Admin
     User::create([
-        'name' => 'Fabricio', 'last_name' => 'Duarte',
-        'email' => 'fabricioduarteoficial@gmail.com',
+        'name' => 'Test', 'last_name' => 'Admin',
+        'email' => 'admin@gmail.com',
         'password' => Hash::make('123456789'),
         'is_admin' => true,
     ]);
 }
+
 
 }
