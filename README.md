@@ -62,10 +62,10 @@ Asegúrate de tener instalado lo siguiente:
 
 6. **Configurar la base de datos:**  
    * Abrí el archivo .env.  
-   * Creá una base de datos vacía en MySQL (ej: portafolio\_db).  
+   * Creá una base de datos vacía en MySQL (ej: soyunaprueba\_db).  
    * Modificá las siguientes líneas en el .env:  
-     DB\_DATABASE=portafolio\_db  
-     DB\_USERNAME=root  
+     DB\_DATABASE=soyunaprueba\_db  
+     DB\_USERNAME=  
      DB\_PASSWORD=
 
 7. **Generar la clave de la aplicación:**  
@@ -85,18 +85,13 @@ Asegúrate de tener instalado lo siguiente:
 2. **Iniciar el servidor de Laravel:** (En una segunda terminal)  
    php artisan serve
 
-¡Listo\! Ahora podés acceder a la aplicación en http://127.0.0.1:8000.
+¡Listo\! Ahora podés acceder a la aplicación.
 
 ## **🔑 Credenciales de Administrador**
 
-Los usuarios administradores se crean automáticamente con el seeder:
+Los usuarios administradores se crean automáticamente con el seeder.
 
-* **Usuario 1:**  
-  * **Email:** docente@utn.com  
-  * **Contraseña:** clave123 *(o la que hayas configurado en el seeder)*  
-* **Usuario 2:**  
-  * **Email:** fabricio.duarte@email.com  
-  * **Contraseña:** clave123 *(o la que hayas configurado en el seeder)*
+
 
 ## **⚠️ Solución de Problemas Comunes**
 

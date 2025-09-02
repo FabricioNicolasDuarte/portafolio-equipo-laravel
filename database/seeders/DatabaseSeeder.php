@@ -13,9 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Esta línea crea 10 usuarios de prueba con datos aleatorios.
-        // Puedes descomentarla (quitarle las //) si los necesitas.
-        // User::factory(10)->create();
+        
 
         // Esta parte crea un usuario específico que puedes usar para iniciar sesión durante el desarrollo.
         User::factory()->create([
