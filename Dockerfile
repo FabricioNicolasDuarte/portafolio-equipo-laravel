@@ -30,6 +30,15 @@ WORKDIR /var/www/html
 # Copia los archivos de tu proyecto
 COPY . .
 
+
+# ----------------- INICIO DEL BLOQUE A AÑADIR ----------------- #
+# Cambia el propietario de los archivos al usuario del servidor web.
+RUN chown -R www-data:www-data /var/www/html
+
+# Da permisos de escritura a las carpetas de storage y bootstrap/cache.
+RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+# ------------------ FIN DEL BLOQUE A AÑADIR ------------------ #
+
 # Instala las dependencias de Composer
 RUN composer install --no-dev --optimize-autoloader
 
